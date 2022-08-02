@@ -53,7 +53,7 @@ export const postQuestion = async (req,res) => {
 
 export const postQuiz = async (req,res) => {
     
-    const answers = req.body.filter((e) => {
+    const answers = req.body.answer.filter((e) => {
         return { questionId : e.question._id , answer : e.answer }
     });
     try{

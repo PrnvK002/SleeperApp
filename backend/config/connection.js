@@ -4,7 +4,6 @@ const MONGO_URI = 'mongodb+srv://user123:accessdata@blogs.ej6tx.mongodb.net/slee
 const connectDB = async() => {
     try{
         const connect = await mongoose.connect(MONGO_URI);
-        console.log(connect);
         console.log(`mongodb successfully connected ${connect}`)
     }catch(err){
         console.log(err);

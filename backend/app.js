@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 import connectDB from './config/connection.js';
 import { errorHandler, notFound } from './middlewares/errorHandler.js';
 
@@ -10,6 +11,10 @@ import sleepRouter from './routes/sleepRouter.js';
 connectDB();
 
 const app = express();
+
+//============= cors setup =============
+
+app.use(cors());
 
 //============ morgan setup ==========
 
