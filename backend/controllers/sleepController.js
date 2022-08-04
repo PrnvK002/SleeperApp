@@ -52,10 +52,13 @@ export const postQuestion = async (req,res) => {
 //@route post quiz
 
 export const postQuiz = async (req,res) => {
-    
-    const answers = req.body.answer.filter((e) => {
+
+    console.log(req.body);
+    const temp = req.body;
+    const answers = temp.map((e) => {
         return { questionId : e.question._id , answer : e.answer }
     });
+    console.log("answers",answers);
     try{
         const quiz = await Quiz.create({
             answers : answers

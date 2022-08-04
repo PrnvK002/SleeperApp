@@ -7,7 +7,7 @@ const asnwerSchema = new Schema({
         type : Schema.Types.ObjectId,
         required : true
     },
-    asnwer : {
+    answer : {
         type : String,
         required : true
     }

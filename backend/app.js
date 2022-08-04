@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import connectDB from './config/connection.js';
 import { errorHandler, notFound } from './middlewares/errorHandler.js';
+import path from 'path';
 
 import sleepRouter from './routes/sleepRouter.js';
 
@@ -28,7 +29,17 @@ app.use(bodyParser.json());
 
 //============ Routes =============
 
-app.use('/api/v1/',sleepRouter);
+app.use('/api/v1/', sleepRouter);
+
+
+const __dirname = path.resolve()
+
+app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
+)
+
 
 //=========== Error handling middlewares ===========
 
@@ -37,4 +48,4 @@ app.use(errorHandler);
 
 
 
-app.listen(5000,console.log('Server started at port 5000'))
+app.listen(5000, console.log('Server started at port 5000'))

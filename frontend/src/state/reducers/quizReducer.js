@@ -18,10 +18,12 @@ export const getQuestions = createAsyncThunk('question/get',async(_,{rejectWithV
 //==================== submitting quiz ==============
 
 export const submitQuiz = createAsyncThunk('question/submit',async (_,{rejectWithValue,getState}) => {
+    console.log('lksfjlskjdf');
     const state = getState();
-    const answer = state.questionReducer.answer;
+    const answer = state.quesitonReducer.answer;
+    console.log(answer);
     try{
-        const response = await Axios.post(answer);
+        const response = await Axios.post('/quiz',answer);
         return response.data;
     }catch(err){
         console.log(err);
