@@ -15,7 +15,7 @@ const app = express();
 
 //============= cors setup =============
 
-app.use(cors());
+app.use(cors({ origin : '*' }));
 
 //============ morgan setup ==========
 
